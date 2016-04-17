@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}All Feeds{% endblock %}
+{% block subtitle %}Lista unosa svih feedova{% endblock %}
+{% block content %}
+
+<!--  naslov, autora, vrijeme objave i sliku -->
+<br>
+
+{% for item in feeditems %}
+
+	<div class="row">
+		<div class="col-md-2">
+			
+
+				<img class="img-thumbnail" width="150" height="100" src="{{item.img_url}}" alt="slika">
+
+		</div>
+		<div class="col-md-9">
+		<h4><a href="{{item.url}}"> {{item.title }}</a></h4>
+		{{ item.author }}, {{ item.timestamp }}
+		</div>
+    </div>
+	</br>
+       
+{% endfor %}
+
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if feeditems.has_previous %}
+            <a href="?page={{ feeditems.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ feeditems.number }} of {{ feeditems.paginator.num_pages }}.
+        </span>
+
+        {% if feeditems.has_next %}
+            <a href="?page={{ feeditems.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+	
+{% endblock content %}
+
+
+
+

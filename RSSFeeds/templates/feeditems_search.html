@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock %}
+{% block subtitle %}Pretraga prema autoru{% endblock %}
+
+{% block content %}
+
+
+
+<form class="form-inline" method = "GET" action="">
+	
+<div class="form-group" id="complete"><input type="text" name="feed_query" id="feed_query" placeholder="Author's name"/></div>
+
+
+</form>
+
+
+
+<br>
+
+{% for obj in feeds %} 
+
+
+	<div class="row">
+		<div class="col-md-2">
+			
+
+				<img class="img-thumbnail" width="150" height="100" src="{{obj.img_url}}" alt="slika">
+
+		</div>
+		<div class="col-md-9">
+		<h4><a href="{{obj.url}}"> {{obj.title }}</a></h4>
+		 {{ obj.timestamp }}
+		</div>
+    </div>
+	</br>
+       
+{% endfor %}
+
+
+	
+{% endblock content %}
+

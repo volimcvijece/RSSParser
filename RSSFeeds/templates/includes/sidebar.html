@@ -1,0 +1,15 @@
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+          <div class="sidebar-module">
+            <h4>Feedovi</h4>
+            <ol class="list-unstyled">
+              {% for feed in all_rss %}
+			<li><a href="{% url 'RSSFeeds:feeds_filt' %}{{feed.id}}"> {{feed.title }}</a></li>
+		{% endfor %}
+              
+            </ol>
+          </div>
+          
+        </div><!-- /.blog-sidebar -->
+		
+		<!-- <a href="{{feed.id}}"> -->

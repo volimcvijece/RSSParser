@@ -1,0 +1,45 @@
+{% extends 'base2.html' %}
+{% block title %}Filtered feeds{% endblock %}
+
+
+{% block content %}
+		
+        {% for f in filtered %}
+				<div class="row">
+		<div class="col-md-2">
+			
+
+				<img class="img-thumbnail" width="150" height="100" src="{{f.img_url}}" alt="slika">
+
+		</div>
+		<div class="col-md-9">
+		<h4><a href="{{f.url}}"> {{f.title }}</a></h4>
+		{{ f.author }}, {{ f.timestamp }}
+		</div>
+    </div>
+	</br>
+{% endfor %}
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if filtered.has_previous %}
+            <a href="?page={{ filtered.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ filtered.number }} of {{ filtered.paginator.num_pages }}.
+        </span>
+
+        {% if filtered.has_next %}
+            <a href="?page={{ filtered.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}
+
+        
+	
+	

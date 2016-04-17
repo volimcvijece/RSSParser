@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}RSS Feeds{% endblock %}
+{% block subtitle %}Lista dodanih feedova{% endblock %}
+
+{% block content %}
+		<ul class="list-group">
+		
+        {% for feed in feeds %}
+			<li class="list-group-item"><a href="{{feed.url}}"> {{feed.title }}</a></li>
+		{% endfor %} <br>
+		<a href="{% url 'RSSFeeds:new_feed' %}" class="btn btn-primary"> Ubaci novi feed </a> 
+	</ul>
+           
+
+{% endblock content %}
+
+        
